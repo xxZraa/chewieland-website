@@ -3,279 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHEWIELAND - Visual Store</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="icon.png">
+    <title>Website Sedang Maintenance</title>
+    <style>
+        /* Reset dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4a90e2, #50e3c2);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(0,0,0,0.5);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #4a90e2;
+            background: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        @media(max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-<body class="blur-content">
-    <div id="warning-overlay" class="warning-overlay">
-        <div class="warning-box">
-            <div class="warning-icon">⚠️</div>
-            <h2 class="warning-title">PERHATIAN!</h2>
-            <p class="warning-text">
-                Dilarang keras memperjualbelikan, mendistribusikan, atau menggunakan asset yang ada di dalam website ini tanpa izin. 
-                Semua karya dilindungi hak cipta dan hanya untuk keperluan portofolio.
-            </p>
-            <p class="warning-subtext">
-                Pelanggaran akan ditindak sesuai hukum yang berlaku.
-            </p>
-            <button class="warning-confirm" onclick="acceptWarning()">Saya Mengerti</button>
-        </div>
-    </div>
-
-    <canvas id="particles-canvas"></canvas>
-    
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="assets/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="logo-placeholder" style="display: none;">🎨</div>
-            </div>
-            <h1>CHEWIELAND</h1>
-        </div>
-    </header>
-
+<body>
     <div class="container">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <h2 class="hero-title">Welcome, Folks!</h2>
-            <p class="hero-subtitle">Explore our creative works and designs</p>
-            <p class="hero-description">
-                We are a creative team focused on producing high-quality visual content for streamers, gamers, and content creators. From thumbnails to stream overlays, we're ready to bring your visual to life.
-            </p>
-        </section>
-
-        <!-- Category Navigation -->
-        <section class="category-section">
-            <h2 class="section-title">Our Portofolio</h2>
-            <nav class="category-nav">
-                <button class="category-btn" onclick="showCategory('thumbnail')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-thumbnail.png" width="50">
-                    </span>
-                    <span>Thumbnail</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('banner')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-banner.png" width="50">
-                    </span>
-                    <span>Banner</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('stream-overlay')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-overlay.png" width="50">
-                    </span>
-                    <span>Stream Overlay</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('emote')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-emote.png" width="50">
-                    </span>
-                    <span>Emote</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('logo')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-logo.png" width="50">
-                    </span>
-                    <span>Logo</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('tournament')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-trophy.png" width="50">
-                    </span>
-                    <span>Tournament</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('tako')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-tako.png" width="50">
-                    </span>
-                    <span>Tako Overlay</span>
-                </button>
-            </nav>
-
-            <!-- Category Content -->
-            <div class="category-content">
-                <div id="thumbnail" class="category-item">
-                    <div class="gallery-grid" id="thumbnail-gallery"></div>
-                </div>
-
-                <div id="banner" class="category-item">
-                    <div class="gallery-grid" id="banner-gallery"></div>
-                </div>
-
-                <div id="emote" class="category-item">
-                    <div class="gallery-grid" id="emote-gallery"></div>
-                </div>
-
-                <div id="logo" class="category-item">
-                    <div class="gallery-grid" id="logo-gallery"></div>
-                </div>
-
-                <div id="stream-overlay" class="category-item">
-                    <div class="gallery-grid" id="stream-overlay-gallery"></div>
-                </div>
-
-                <div id="tako-overlay" class="category-item">
-                    <div class="gallery-grid" id="tako-overlay-gallery"></div>
-                </div>
-
-                <div id="tournament" class="category-item">
-                    <div class="gallery-grid" id="tournament-gallery"></div>
-                </div>
-
-                <div id="tako" class="category-item">
-                    <div class="gallery-grid" id="tako-gallery"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Staff Section -->
-        <section class="staff-section">
-            <h2 class="section-title">Our Team</h2>
-            <p class="section-subtitle">Meet the creative minds behind our work</p>
-            <div class="staff-grid" id="staff-grid"></div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section">
-            <h2 class="section-title">Interested?<br>Contact Us Now!</h2>
-            <p class="section-subtitle">If you'd like to order or just ask for our price list, please reach out to us through the contact options below.</p>
-            <div class="contact-grid">
-                <a href="mailto:itsmechewie@gmail.com" class="contact-card">
-                    <div class="contact-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-email.png" width="80">
-                    </div>
-                    <h3>Email</h3>
-                    <p>itsmechewie@gmail.com</p>
-                </a>
-                <a href="https://dsc.gg/chewieland" target="_blank" class="contact-card">
-                    <div class="contact-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-discord.png" width="80">
-                    </div>
-                    <h3>Discord</h3>
-                    <p>Join our server</p>
-                </a>
-                <a href="https://www.tiktok.com/@chewieland.std" target="_blank" class="contact-card">
-                    <div class="contact-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-tiktok.png" width="80">
-                    </div>
-                    <h3>Tiktok</h3>
-                    <p>@chewieland.std</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2024 CHEWIELAND. All rights reserved.</p>
-        </footer>
+        <h1>Website Sedang Maintenance</h1>
+        <p>Kami sedang memperbarui situs untuk pengalaman yang lebih baik.<br>Terima kasih atas kesabaran Anda!</p>
+        <!-- Ganti "#" dengan URL halaman utama ketika selesai maintenance -->
+        <a href="#" class="btn">Kembali ke Website</a>
     </div>
-
-    <!-- Modal for viewing images/videos -->
-    <div id="modal" class="modal">
-        <span class="close">&times;</span>
-        <div class="modal-content-wrapper">
-            <div class="modal-left">
-                <img class="modal-content" id="modal-img">
-                <video class="modal-content" id="modal-video" controls loop controlsList="nodownload"></video>
-            </div>
-            <div class="modal-right">
-                <div class="modal-info">
-                    <h2 class="modal-title">Project Title</h2>
-                    <div class="modal-details">
-                        <div class="detail-item">
-                            <span class="detail-icon">👤</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Client Name</span>
-                                <span class="detail-value" id="modal-client">Client Name</span>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📅</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Order Date</span>
-                                <span class="detail-value" id="modal-date">2024-01-01</span>
-                            </div>
-                        </div>
-                        <div class="detail-item" id="social-media-container">
-                            <span class="detail-icon">🔗</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Social Media</span>
-                                <div class="social-links" id="modal-social">
-                                    <a href="#" target="_blank" class="social-link">Twitter</a>
-                                    <a href="#" target="_blank" class="social-link">Instagram</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail-item" id="price-container">
-                            <span class="detail-icon">💵</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Price</span>
-                                <span class="detail-value" id="modal-price">Rp. 10</span>
-                            </div>
-                        </div>
-                        <!-- <div class="detail-item">
-                            <span class="detail-icon">💸</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Price</span>
-                                <span class="detail-value" id="modal-price">Rp. 500.000</span>
-                            </div>
-                        </div> -->
-                        <!-- <div class="detail-item" id="website-link-container" style="display: none;">
-                            <span class="detail-icon">🌐</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Website Link</span>
-                                <a href="#" target="_blank" class="website-link-btn" id="modal-website">
-                                    Visit Website →
-                                </a>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Staff Details -->
-    <div id="staff-modal" class="modal">
-        <span class="close" onclick="closeStaffModal()">&times;</span>
-        <div class="modal-content-wrapper">
-            <div class="modal-left">
-                <img class="modal-content show" id="staff-modal-img">
-            </div>
-            <div class="modal-right">
-                <div class="modal-info">
-                    <h2 class="modal-title" id="staff-modal-name">Staff Name</h2>
-                    <div class="modal-details">
-                        <div class="detail-item">
-                            <span class="detail-icon">💼</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Role</span>
-                                <span class="detail-value" id="staff-modal-role">Role</span>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📝</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Description</span>
-                                <span class="detail-value" id="staff-modal-desc">Description</span>
-                            </div>
-                        </div>
-                        <div class="detail-item" id="staff-social-container">
-                            <span class="detail-icon">🔗</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Social Media</span>
-                                <div class="social-links" id="staff-modal-social"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
