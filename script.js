@@ -472,13 +472,13 @@ function openStaffModal(staff) {
     if (staff.social && Object.keys(staff.social).length > 0) {
         staffSocialContainer.style.display = 'flex';
         
-        if (staff.social.twitter) {
-            const twitterLink = document.createElement('a');
-            twitterLink.href = staff.social.twitter;
-            twitterLink.target = '_blank';
-            twitterLink.className = 'social-link';
-            twitterLink.innerHTML = '🐦 Twitter';
-            staffModalSocial.appendChild(twitterLink);
+        if (staff.social.youtube) {
+            const youtubeLink = document.createElement('a');
+            youtubeLink.href = staff.social.youtube;
+            youtubeLink.target = '_blank';
+            youtubeLink.className = 'social-link';
+            youtubeLink.innerHTML = '🐦 Youtube';
+            staffModalSocial.appendChild(youtubeLink);
         }
         
         if (staff.social.instagram) {
