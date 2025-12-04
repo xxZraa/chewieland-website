@@ -3,279 +3,729 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHEWIELAND - Visual Store</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="icon.png">
-</head>
-<body class="blur-content">
-    <div id="warning-overlay" class="warning-overlay">
-        <div class="warning-box">
-            <div class="warning-icon">⚠️</div>
-            <h2 class="warning-title">PERHATIAN!</h2>
-            <p class="warning-text">
-                Dilarang keras memperjualbelikan, mendistribusikan, atau menggunakan asset yang ada di dalam website ini tanpa izin. 
-                Semua karya dilindungi hak cipta dan hanya untuk keperluan portofolio.
-            </p>
-            <p class="warning-subtext">
-                Pelanggaran akan ditindak sesuai hukum yang berlaku.
-            </p>
-            <button class="warning-confirm" onclick="acceptWarning()">Saya Mengerti</button>
-        </div>
-    </div>
+    <title>Under Maintenance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <canvas id="particles-canvas"></canvas>
-    
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="assets/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="logo-placeholder" style="display: none;">🎨</div>
-            </div>
-            <h1>CHEWIELAND</h1>
-        </div>
-    </header>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Code typing background */
+        .code-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.15;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px;
+            pointer-events: none;
+        }
+
+        .code-line {
+            white-space: nowrap;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        /* Animated background elements */
+        .bg-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(12, 51, 244, 0.1);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            right: -100px;
+            animation-delay: 2s;
+        }
+
+        .circle:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            bottom: -200px;
+            left: 30%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+
+        /* Glass container */
+        .container {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Icon animation */
+        .icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .gear {
+            width: 100%;
+            height: 100%;
+            border: 4px solid #0c33f4;
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 4s linear infinite;
+        }
+
+        .gear::before,
+        .gear::after {
+            content: '';
+            position: absolute;
+            background: #0c33f4;
+        }
+
+        .gear::before {
+            width: 20px;
+            height: 80px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .gear::after {
+            width: 80px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .typing-text {
+            display: inline-block;
+            border-right: 3px solid #ffffff;
+            padding-right: 5px;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% {
+                border-color: #ffffff;
+            }
+            51%, 100% {
+                border-color: transparent;
+            }
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Loading dots */
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: bounce 1.4s ease-in-out infinite;
+        }
+
+        .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Status text */
+        .status {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Info box */
+        .info-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(12, 51, 244, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(12, 51, 244, 0.3);
+        }
+
+        .info-box p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Countdown timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .time-unit {
+            background: rgba(12, 51, 244, 0.15);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(12, 51, 244, 0.3);
+            min-width: 70px;
+        }
+
+        .time-value {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .time-label {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Chat bot */
+        .chatbot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0c33f4, #4d6cff);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(12, 51, 244, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 320px;
+            height: 420px;
+            background: rgba(20, 20, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-window.active {
+            display: flex;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-header {
+            padding: 20px;
+            background: rgba(12, 51, 244, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .chat-header p {
+            margin: 5px 0 0 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(12, 51, 244, 0.5);
+            border-radius: 3px;
+        }
+
+        .message {
+            padding: 12px 16px;
+            border-radius: 12px;
+            max-width: 80%;
+            animation: messageAppear 0.3s ease-out;
+        }
+
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.bot {
+            background: rgba(12, 51, 244, 0.2);
+            border: 1px solid rgba(12, 51, 244, 0.3);
+            align-self: flex-start;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .message.user {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            align-self: flex-end;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .chat-options {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-btn {
+            padding: 10px 15px;
+            background: rgba(12, 51, 244, 0.15);
+            border: 1px solid rgba(12, 51, 244, 0.3);
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .option-btn:hover {
+            background: rgba(12, 51, 244, 0.3);
+            transform: translateX(5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .code-background {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="code-background" id="codeBackground"></div>
+
+    <div class="bg-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
 
     <div class="container">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <h2 class="hero-title">Welcome, Folks!</h2>
-            <p class="hero-subtitle">Explore our creative works and designs</p>
-            <p class="hero-description">
-                We are a creative team focused on producing high-quality visual content for streamers, gamers, and content creators. From thumbnails to stream overlays, we're ready to bring your visual to life.
-            </p>
-        </section>
+        <div class="icon">
+            <div class="gear"></div>
+        </div>
 
-        <!-- Category Navigation -->
-        <section class="category-section">
-            <h2 class="section-title">Our Portofolio</h2>
-            <nav class="category-nav">
-                <button class="category-btn" onclick="showCategory('thumbnail')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-thumbnail.png" width="50">
-                    </span>
-                    <span>Thumbnail</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('banner')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-banner.png" width="50">
-                    </span>
-                    <span>Banner</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('stream-overlay')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-overlay.png" width="50">
-                    </span>
-                    <span>Stream Overlay</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('emote')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-emote.png" width="50">
-                    </span>
-                    <span>Emote</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('logo')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-logo.png" width="50">
-                    </span>
-                    <span>Logo</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('tournament')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-trophy.png" width="50">
-                    </span>
-                    <span>Tournament</span>
-                </button>
-                <button class="category-btn" onclick="showCategory('tako')">
-                    <span class="category-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-tako.png" width="50">
-                    </span>
-                    <span>Tako Overlay</span>
-                </button>
-            </nav>
+        <h1><span class="typing-text" id="typingText"></span></h1>
+        <p>Kami sedang melakukan perbaikan sistem untuk memberikan pengalaman yang lebih baik. Mohon kembali lagi sebentar.</p>
 
-            <!-- Category Content -->
-            <div class="category-content">
-                <div id="thumbnail" class="category-item">
-                    <div class="gallery-grid" id="thumbnail-gallery"></div>
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div class="status">SEDANG DALAM PROSES...</div>
+
+        <div class="info-box">
+            <p>⏱️ Estimasi Selesai:</p>
+            <div class="countdown">
+                <div class="time-unit">
+                    <span class="time-value" id="hours">00</span>
+                    <span class="time-label">Jam</span>
                 </div>
-
-                <div id="banner" class="category-item">
-                    <div class="gallery-grid" id="banner-gallery"></div>
+                <div class="time-unit">
+                    <span class="time-value" id="minutes">00</span>
+                    <span class="time-label">Menit</span>
                 </div>
-
-                <div id="emote" class="category-item">
-                    <div class="gallery-grid" id="emote-gallery"></div>
-                </div>
-
-                <div id="logo" class="category-item">
-                    <div class="gallery-grid" id="logo-gallery"></div>
-                </div>
-
-                <div id="stream-overlay" class="category-item">
-                    <div class="gallery-grid" id="stream-overlay-gallery"></div>
-                </div>
-
-                <div id="tako-overlay" class="category-item">
-                    <div class="gallery-grid" id="tako-overlay-gallery"></div>
-                </div>
-
-                <div id="tournament" class="category-item">
-                    <div class="gallery-grid" id="tournament-gallery"></div>
-                </div>
-
-                <div id="tako" class="category-item">
-                    <div class="gallery-grid" id="tako-gallery"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Staff Section -->
-        <section class="staff-section">
-            <h2 class="section-title">Our Team</h2>
-            <p class="section-subtitle">Meet the creative minds behind our work</p>
-            <div class="staff-grid" id="staff-grid"></div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section">
-            <h2 class="section-title">Interested?<br>Contact Us Now!</h2>
-            <p class="section-subtitle">If you'd like to order or just ask for our price list, please reach out to us through the contact options below.</p>
-            <div class="contact-grid">
-                <a href="mailto:itsmechewie@gmail.com" class="contact-card">
-                    <div class="contact-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-email.png" width="80">
-                    </div>
-                    <h3>Email</h3>
-                    <p>itsmechewie@gmail.com</p>
-                </a>
-                <a href="https://dsc.gg/chewieland" target="_blank" class="contact-card">
-                    <div class="contact-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-discord.png" width="80">
-                    </div>
-                    <h3>Discord</h3>
-                    <p>Join our server</p>
-                </a>
-                <a href="https://www.tiktok.com/@chewieland.std" target="_blank" class="contact-card">
-                    <div class="contact-icon">
-                        <img src="https://r2.fivemanage.com/O8gTny1FFWaW5GpAASrI2/website-tiktok.png" width="80">
-                    </div>
-                    <h3>Tiktok</h3>
-                    <p>@chewieland.std</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2024 CHEWIELAND. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <!-- Modal for viewing images/videos -->
-    <div id="modal" class="modal">
-        <span class="close">&times;</span>
-        <div class="modal-content-wrapper">
-            <div class="modal-left">
-                <img class="modal-content" id="modal-img">
-                <video class="modal-content" id="modal-video" controls loop controlsList="nodownload"></video>
-            </div>
-            <div class="modal-right">
-                <div class="modal-info">
-                    <h2 class="modal-title">Project Title</h2>
-                    <div class="modal-details">
-                        <div class="detail-item">
-                            <span class="detail-icon">👤</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Client Name</span>
-                                <span class="detail-value" id="modal-client">Client Name</span>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📅</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Order Date</span>
-                                <span class="detail-value" id="modal-date">2024-01-01</span>
-                            </div>
-                        </div>
-                        <div class="detail-item" id="social-media-container">
-                            <span class="detail-icon">🔗</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Social Media</span>
-                                <div class="social-links" id="modal-social">
-                                    <a href="#" target="_blank" class="social-link">Twitter</a>
-                                    <a href="#" target="_blank" class="social-link">Instagram</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail-item" id="price-container">
-                            <span class="detail-icon">💵</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Price</span>
-                                <span class="detail-value" id="modal-price">Rp. 10</span>
-                            </div>
-                        </div>
-                        <!-- <div class="detail-item">
-                            <span class="detail-icon">💸</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Price</span>
-                                <span class="detail-value" id="modal-price">Rp. 500.000</span>
-                            </div>
-                        </div> -->
-                        <!-- <div class="detail-item" id="website-link-container" style="display: none;">
-                            <span class="detail-icon">🌐</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Website Link</span>
-                                <a href="#" target="_blank" class="website-link-btn" id="modal-website">
-                                    Visit Website →
-                                </a>
-                            </div>
-                        </div> -->
-                    </div>
+                <div class="time-unit">
+                    <span class="time-value" id="seconds">00</span>
+                    <span class="time-label">Detik</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal for Staff Details -->
-    <div id="staff-modal" class="modal">
-        <span class="close" onclick="closeStaffModal()">&times;</span>
-        <div class="modal-content-wrapper">
-            <div class="modal-left">
-                <img class="modal-content show" id="staff-modal-img">
+    <!-- Chat Bot -->
+    <div class="chatbot">
+        <button class="chat-toggle" id="chatToggle">💬</button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h3>Support Bot</h3>
+                <p>Ada yang bisa kami bantu?</p>
             </div>
-            <div class="modal-right">
-                <div class="modal-info">
-                    <h2 class="modal-title" id="staff-modal-name">Staff Name</h2>
-                    <div class="modal-details">
-                        <div class="detail-item">
-                            <span class="detail-icon">💼</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Role</span>
-                                <span class="detail-value" id="staff-modal-role">Role</span>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-icon">📝</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Description</span>
-                                <span class="detail-value" id="staff-modal-desc">Description</span>
-                            </div>
-                        </div>
-                        <div class="detail-item" id="staff-social-container">
-                            <span class="detail-icon">🔗</span>
-                            <div class="detail-text">
-                                <span class="detail-label">Social Media</span>
-                                <div class="social-links" id="staff-modal-social"></div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    Halo! Saya bot assistant Chewieland. Pilih pertanyaan di bawah atau tanyakan sesuatu.
                 </div>
+            </div>
+            <div class="chat-options" id="chatOptions">
+                <button class="option-btn" data-question="Kapan selesai?">📅 Kapan maintenance selesai?</button>
+                <button class="option-btn" data-question="Kenapa maintenance?">🔧 Kenapa ada maintenance?</button>
+                <!-- <button class="option-btn" data-question="Data aman?">🔒 Apakah data saya aman?</button> -->
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Typing effect for title with loop
+        const titleText = "Under Maintenance";
+        const typingElement = document.getElementById('typingText');
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeTitle() {
+            if (!isDeleting && charIndex < titleText.length) {
+                // Typing forward
+                typingElement.textContent += titleText[charIndex];
+                charIndex++;
+                setTimeout(typeTitle, 100 + Math.random() * 100);
+            } else if (!isDeleting && charIndex === titleText.length) {
+                // Pause at end before deleting
+                isDeleting = true;
+                setTimeout(typeTitle, 2000);
+            } else if (isDeleting && charIndex > 0) {
+                // Deleting backward
+                typingElement.textContent = titleText.substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(typeTitle, 50);
+            } else if (isDeleting && charIndex === 0) {
+                // Pause before retyping
+                isDeleting = false;
+                setTimeout(typeTitle, 500);
+            }
+        }
+
+        // Start title typing effect after a short delay
+        setTimeout(typeTitle, 500);
+
+        // Countdown Timer (set to 3 hours from now)
+        const endTime = new Date().getTime() + (10 * 60 * 60 * 1000); // 3 hours
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = endTime - now;
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // Chat Bot Functionality
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatMessages = document.getElementById('chatMessages');
+        const optionButtons = document.querySelectorAll('.option-btn');
+
+        const responses = {
+            'Kapan selesai?': 'Maintenance diperkirakan selesai dalam waktu yang ditunjukkan di countdown timer di atas. Kami akan segera menginformasikan jika ada perubahan.',
+            'Kenapa maintenance?': 'Kami sedang melakukan update sistem, peningkatan performa, dan penambahan fitur baru untuk memberikan pengalaman yang lebih baik kepada Anda.',
+            'Data aman?': 'Tenang saja! Semua data Anda tersimpan dengan aman. Kami hanya melakukan maintenance pada sistem tanpa mengganggu data pengguna.'
+        };
+
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+            if (chatWindow.classList.contains('active')) {
+                chatToggle.textContent = '✕';
+            } else {
+                chatToggle.textContent = '💬';
+            }
+        });
+
+        optionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const question = button.dataset.question;
+                
+                // Add user message
+                const userMsg = document.createElement('div');
+                userMsg.className = 'message user';
+                userMsg.textContent = button.textContent;
+                chatMessages.appendChild(userMsg);
+
+                // Add bot response after delay
+                setTimeout(() => {
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'message bot';
+                    botMsg.textContent = responses[question];
+                    chatMessages.appendChild(botMsg);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 600);
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        });
+
+
+        // Code typing effect
+        const codeLines = [
+            'function initializeSystem() {',
+            '  console.log("Starting maintenance mode...");',
+            '  const database = connectToDatabase();',
+            '  await database.backup();',
+            '  updateServerConfigs();',
+            '}',
+            '',
+            'class MaintenanceManager {',
+            '  constructor() {',
+            '    this.status = "in_progress";',
+            '    this.startTime = Date.now();',
+            '  }',
+            '',
+            '  async performMaintenance() {',
+            '    await this.checkSystemHealth();',
+            '    await this.updateDependencies();',
+            '    await this.optimizeDatabase();',
+            '    this.status = "completed";',
+            '  }',
+            '}',
+            '',
+            'const manager = new MaintenanceManager();',
+            'manager.performMaintenance();',
+            '',
+            '// Checking server status...',
+            '// Running diagnostics...',
+            '// Updating configurations...',
+            '// System optimization in progress...'
+        ];
+
+        const codeBackground = document.getElementById('codeBackground');
+        let currentLine = 0;
+        let currentChar = 0;
+        let lineElements = [];
+
+        // Initialize empty lines
+        codeLines.forEach(() => {
+            const lineDiv = document.createElement('div');
+            lineDiv.className = 'code-line';
+            codeBackground.appendChild(lineDiv);
+            lineElements.push(lineDiv);
+        });
+
+        function typeCode() {
+            if (currentLine < codeLines.length) {
+                if (currentChar < codeLines[currentLine].length) {
+                    lineElements[currentLine].textContent += codeLines[currentLine][currentChar];
+                    currentChar++;
+                    setTimeout(typeCode, 30 + Math.random() * 40);
+                } else {
+                    currentLine++;
+                    currentChar = 0;
+                    setTimeout(typeCode, 100);
+                }
+            } else {
+                // Reset and restart
+                setTimeout(() => {
+                    lineElements.forEach(el => el.textContent = '');
+                    currentLine = 0;
+                    currentChar = 0;
+                    setTimeout(typeCode, 2000);
+                }, 3000);
+            }
+        }
+
+        // Start typing effect
+        setTimeout(typeCode, 1000);
+    </script>
 </body>
 </html>
