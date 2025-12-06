@@ -1,5 +1,4 @@
 // ==================== WARNING OVERLAY ====================
-// PENTING: Fungsi ini harus di paling atas agar tersedia saat HTML load
 window.acceptWarning = function() {
     // console.log('Accept warning clicked');
     const warningOverlay = document.getElementById('warning-overlay');
@@ -18,7 +17,6 @@ window.acceptWarning = function() {
 };
 
 // ==================== DATA CONFIGURATION ====================
-// Edit data di bawah ini sesuai kebutuhan Anda
 
 // Data untuk gallery gambar (thumbnail, banner, emote, logo)
 const galleryData = {
@@ -138,7 +136,7 @@ const galleryData = {
             client: 'Coming Soon', 
             clientLabel: 'Project Name',
             date: '??-??-????',
-            orderLabel: 'Limit Item', // Label baru untuk order date
+            orderLabel: 'Limit Item',
             socialLabel: 'Preview Link',
             clientEmote: '🎯',
             dateIcon: '📦',
@@ -199,7 +197,7 @@ const videoGalleryData = {
     ]
 };
 
-// Data untuk staff - TAMBAHKAN ROLE, DESCRIPTION, DAN SOCIAL MEDIA DI SINI
+// Data untuk staff
 const staffData = [
     { 
         name: 'Chewie', 
@@ -223,7 +221,7 @@ const staffData = [
     },
 ];
 
-// ==================== PARTICLE ANIMATION (SIMPLIFIED) ====================
+// ==================== PARTICLE ANIMATION ====================
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 
@@ -231,7 +229,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const particles = [];
-const particleCount = 40; // Dikurangi dari 100 menjadi 40
+const particleCount = 40;
 
 class Particle {
     constructor() {
@@ -272,13 +270,11 @@ function animateParticles() {
         particles[i].update();
         particles[i].draw();
         
-        // Hanya connect ke particle terdekat untuk mengurangi line
         for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x;
             const dy = particles[i].y - particles[j].y;
             const distance = Math.sqrt(dx * dx + dy * dy);
             
-            // Jarak dikurangi dari 100 menjadi 80
             if (distance < 80) {
                 ctx.strokeStyle = `rgba(12, 51, 244, ${0.15 * (1 - distance / 80)})`;
                 ctx.lineWidth = 0.3;
@@ -480,22 +476,6 @@ function openModal(src, client, date, social, price = 'Rp. -', type, clientLabel
     } else {
         socialMediaContainer.style.display = 'none';
     }
-
-    // if (price) {
-    //     priceConatainer.style.display = "absolute";
-    //     modalPrice.textContent = price;
-    // } else {
-    //     priceConatainer.style.display = "none";
-    // }
-    
-    // Set website link (untuk Overlay Tako)
-    // Jika ada website link, tampilkan tombol. Jika tidak ada, sembunyikan
-    // if (websiteLink) {
-    //     websiteLinkContainer.style.display = 'flex';
-    //     modalWebsite.href = websiteLink;
-    // } else {
-    //     websiteLinkContainer.style.display = 'none';
-    // }
     
     // Show media
     if (type === 'image') {
@@ -546,13 +526,11 @@ const staffSocialContainer = document.getElementById('staff-social-container');
 function openStaffModal(staff) {
     staffModal.style.display = 'block';
     
-    // Set staff info
     staffModalImg.src = staff.photo;
     staffModalName.textContent = staff.name;
     staffModalRole.textContent = staff.role;
     staffModalDesc.textContent = staff.description;
     
-    // Set social media links
     staffModalSocial.innerHTML = '';
     if (staff.social && Object.keys(staff.social).length > 0) {
         staffSocialContainer.style.display = 'flex';
@@ -626,5 +604,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load staff
     loadStaff();
     
-    // console.log('✅ CHEWIELAND Website loaded successfully!');
 });
