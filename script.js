@@ -1,7 +1,7 @@
 // ==================== WARNING OVERLAY ====================
 // PENTING: Fungsi ini harus di paling atas agar tersedia saat HTML load
 window.acceptWarning = function() {
-    console.log('Accept warning clicked');
+    // console.log('Accept warning clicked');
     const warningOverlay = document.getElementById('warning-overlay');
     const body = document.body;
     
@@ -14,7 +14,7 @@ window.acceptWarning = function() {
         body.classList.remove('blur-content');
     }
     
-    console.log('Warning dismissed');
+    // console.log('Warning dismissed');
 };
 
 // ==================== DATA CONFIGURATION ====================
@@ -24,62 +24,121 @@ window.acceptWarning = function() {
 const galleryData = {
     thumbnail: [
         { 
-            img: 'assets/thumbnail/cheezzy.jpg', 
+            img: 'assets/thumbnail/thumbnail_cheezzy.jpg', 
             client: 'Cheezzy', 
-            date: '11-07-2025',
+            date: '-',
             social: {
-                youtube: 'https://youtube.com/Cheezzy_',
-                instagram: 'https://instagram.com/client1'
+                youtube: 'https://www.youtube.com/@Cheezzy_',
+                instagram: 'https://www.instagram.com/supercheezzy_/'
             }
         },
         { 
-            img: 'assets/thumbnail/ajite14.jpg', 
-            client: 'Ajite14', 
-            date: '11-12-2024',
+            img: 'assets/thumbnail/thumbnail_pablo.jpg', 
+            client: 'ItsPablo', 
+            date: '-',
             social: {
-                youtube: 'https://www.youtube.com/@ajite14',
-                instagram: 'https://www.instagram.com/ajidhabie/'
+                youtube: 'https://www.youtube.com/@itsapablo',
+                instagram: 'https://www.instagram.com/itsapabloo/'
+            }
+        },
+        { 
+            img: 'assets/thumbnail/thumbnail_zaza.jpg', 
+            client: 'Zaza', 
+            date: '-',
+            social: {
+                youtube: 'https://www.youtube.com/@fazahandiko',
+                instagram: 'https://www.instagram.com/fazahandiko'
             }
         },
     ],
     banner: [
         { 
-            img: 'assets/banner/banner1.jpg', 
-            client: 'Client Name 1', 
-            date: '02-12-2025',
+            img: 'assets/banner/banner_jaypabss.jpg', 
+            client: 'Jaypabss', 
+            date: '-',
             social: {
-                instagram: 'https://instagram.com/mhmmdrifqiial._'
+                youtube: 'https://www.youtube.com/@Jaypabss7',
+                instagram: 'https://www.instagram.com/jaypabsss/'
+            }
+        },
+        { 
+            img: 'assets/banner/banner_rafli.jpg', 
+            client: 'Rafli Saptari', 
+            date: '-',
+            social: {
+                youtube: 'https://www.youtube.com/@RafliSaftari',
+            }
+        },
+        { 
+            img: 'assets/banner/banner_tifansan.jpg', 
+            client: 'Tifansan', 
+            date: '-',
+            social: {
+                youtube: 'https://www.youtube.com/@tifansan1',
+                instagram: 'https://www.instagram.com/tifansan/'
             }
         }
     ],
     emote: [
         { 
-            img: 'assets/emote/emote1.png', 
-            client: 'Client Name 1', 
-            date: '2024-02-05',
+            img: 'assets/emote/emote_deankt.jpg', 
+            client: 'DEANKT', 
+            date: '-',
             social: {
-                twitter: 'https://twitter.com/client1',
-                instagram: 'https://instagram.com/client1'
+                youtube: 'https://www.youtube.com/@deanDEANKT',
+                instagram: 'https://www.instagram.com/aldeantg/'
             }
-        }
+        },
+        { 
+            img: 'assets/emote/emote_doni.jpg', 
+            client: 'Doni Mulyadi', 
+            date: '-',
+            social: {
+                youtube: 'https://www.youtube.com/@NozzyGamingOfficial',
+                instagram: 'https://www.instagram.com/valkeyw/'
+            }
+        },
+        { 
+            img: 'assets/emote/emote_senna.jpg', 
+            client: 'Senna', 
+            date: '-',
+            social: {
+                youtube: 'https://www.youtube.com/@sennaaaaaaaa',
+                instagram: 'https://www.instagram.com/shenaya.sya/'
+            }
+        },
     ],
     logo: [
         { 
-            img: 'assets/logo/vtex.jpg', 
-            client: 'Client Name 1', 
-            date: '2024-01-30',
+            img: 'assets/logo/logo_ajite14.jpg', 
+            client: 'Ajite14', 
+            date: '-',
             social: {
-                twitter: 'https://twitter.com/client1'
+                youtube: 'https://www.youtube.com/@ajite14',
+                instagram: 'https://www.instagram.com/ajidhabie/'
             }
-        }
+        },
+        { 
+            img: 'assets/logo/logo_nabstore.jpg', 
+            client: 'Nabstore', 
+            date: '-',
+        },
+        { 
+            img: 'assets/logo/logo_vtex.jpg', 
+            client: 'Vtex', 
+            date: '-',
+            social: {
+                youtube: 'https://www.youtube.com/@vTexx'
+            }
+        },
     ],
     tako: [
         { 
-            img: 'assets/thumbnail/ajite14.png', 
+            img: 'assets/staff/coming_soon.jpg', 
             client: 'Coming Soon', 
             clientLabel: 'Project Name',
             date: '??-??-????',
-            orderLabel: 'Qty', // Label baru untuk order date
+            orderLabel: 'Limit Item', // Label baru untuk order date
             socialLabel: 'Preview Link',
             clientEmote: '🎯',
             dateIcon: '📦',
@@ -95,18 +154,44 @@ const galleryData = {
 const videoGalleryData = {
     'stream-overlay': [
         { 
-            video: 'assets/stream-overlay/erga.webm', 
+            video: 'assets/stream-overlay/streamoverlay_ergaIrlianto.webm', 
             client: 'Erga Irlianto', 
-            date: '2024-01-12',
+            date: '-',
             social: {
                 youtube: 'https://www.youtube.com/@ergairlianto',
                 instagram: 'https://www.instagram.com/puffin.anvil'
             }
-        }
+        },
+        { 
+            video: 'assets/stream-overlay/streamoverlay_pablo.webm', 
+            client: 'ItsPablo', 
+            date: '-',
+            social: {
+                youtube: 'https://www.youtube.com/@itsapablo',
+                instagram: 'https://www.instagram.com/itsapabloo/'
+            }
+        },
+        { 
+            video: 'assets/stream-overlay/streamoverlay_piggypink.webm', 
+            client: 'PiggyPink', 
+            date: '-',
+            social: {
+                youtube: 'https://www.youtube.com/@Koiajaa',
+            }
+        },
+        { 
+            video: 'assets/stream-overlay/streamoverlay_tahanbadan.webm', 
+            client: 'TahanBadan', 
+            date: '-',
+            social: {
+                youtube: 'https://www.youtube.com/@TAHANBADAN',
+                instagram: 'https://www.instagram.com/okirahmatd/'
+            }
+        },
     ],
     tournament: [
         { 
-            video: 'assets/tournament/tournament1.webm', 
+            video: 'assets/staff/coming_soon.webm', 
             client: 'Coming Soon', 
             date: '??-??-????',
             social: {}
@@ -130,7 +215,7 @@ const staffData = [
         name: 'Zraa', 
         photo: 'assets/staff/zraa.png', 
         role: 'Developer & Web Designer',
-        description: 'Focuses on building interactive, code-driven designs—such as Tako.id donation overlays and website elements—along with making preview mockups for clients.',
+        description: 'Focuses on building interactive, code-driven designs-such as Tako.id donation overlays and website elements-along with making preview mockups for clients.',
         social: {
             instagram: 'https://instagram.com/mhmmdrifqiial._',
             youtube: 'https://www.youtube.com/@othersidezraa'
@@ -255,7 +340,7 @@ function loadImageGallery(categoryId, data) {
             </div>
         `;
         
-        galleryItem.onclick = () => openModal(item.img, item.client, item.date, item.social || {}, item.price, 'image', item.clientLabel || 'Client Name', item.orderLabel || 'Order Date', item.socialLabel || 'Social Media', item.clientEmote || '👤', item.dateIcon || '📅');
+        galleryItem.onclick = () => openModal(item.img, item.client, item.date, item.social || {}, item.price, 'image', item.clientLabel || 'Client Name', item.orderLabel || 'Limit Item', item.socialLabel || 'Social Media', item.clientEmote || '👤', item.dateIcon || '📦');
         gallery.appendChild(galleryItem);
     });
 }
@@ -283,7 +368,7 @@ function loadVideoGallery(categoryId, data) {
             </div>
         `;
         
-        galleryItem.onclick = () => openModal(item.video, item.client, item.date, item.social || {}, item.price, 'video', item.clientLabel || 'Client Name', item.orderLabel || 'Order Date', item.socialLabel || 'Social Media', item.clientEmote || '👤', item.dateIcon || '📅');
+        galleryItem.onclick = () => openModal(item.video, item.client, item.date, item.social || {}, item.price, 'video', item.clientLabel || 'Client Name', item.orderLabel || 'Limit Item', item.socialLabel || 'Social Media', item.clientEmote || '👤', item.dateIcon || '📦');
         gallery.appendChild(galleryItem);
     });
 }
@@ -322,7 +407,7 @@ const modalPrice = document.getElementById('modal-price');
 const priceContainer = document.getElementById('price-container');
 const closeBtn = document.querySelector('.close');
 
-function openModal(src, client, date, social, price = 'Rp. -', type, clientLabel = 'Client Name', orderLabel = 'Order Date', socialLabel = 'Social Media', clientEmote = '👤', dateIcon = '📅') {
+function openModal(src, client, date, social, price = 'Rp. -', type, clientLabel = 'Client Name', orderLabel = 'Limit Item', socialLabel = 'Social Media', clientEmote = '👤', dateIcon = '📦') {
     modal.style.display = 'block';
 
     const modalClientLabel = document.querySelector('.detail-label');
@@ -541,5 +626,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load staff
     loadStaff();
     
-    console.log('✅ CHEWIELAND Website loaded successfully!');
+    // console.log('✅ CHEWIELAND Website loaded successfully!');
 });
